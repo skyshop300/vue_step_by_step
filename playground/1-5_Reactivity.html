@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+    
+    </div>
+
+    <script>
+        // Reactivity: 데이터의 변화를 화면에서 자동으로 감지하여 보여줌.
+        var div = document.querySelector('#app');
+        var viewModel = {};
+
+    // 즉시 실행 함수 : Application 로직에 노출되지 않도록 코드를 구현
+    // 대부분의 OpenSource 라이브러리들이 이렇게 구현 되어있다.
+    (function() {
+        function init() {
+            // 객체의 동작을 재정의 하는 API
+            Object.defineProperty(viewModel, 'str', {
+            });
+            // HTML 값이 할당 되었을 때 div의 텍스트 값을 바꾸는 함수
+            function render(value) {
+                div.innerHTML = value;
+            }
+        }
+        init();
+    })();
+    </script>
+    
+    
+</body>
+</html>
