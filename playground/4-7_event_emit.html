@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <app-header v-on:하위 컴포넌트에서 발생한 이벤트 이름="상위 컴포넌트의 메서드이름"></app-header> -->
+        <!-- passs라는 이벤트를 수신하면 logText라는 이벤트를 발생시킨다. -->
+        <app-header v-on:passs="logText"></app-header>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var appHeader = {
+            // 버튼을 클릭했을 때 상위 클래스로 보낸다.
+            // button을 on:click(클릭)하면 passEvent라는 event가 발생한다.
+            template: '<button v-on:click="passEvent">버튼입니다.</button>',
+            // 버튼을 실행했을때 실행되는 함수
+            methods: {
+                // passEvnet가 발생하면 event emit한다
+                passEvent: function() {
+                    this.$emit('passs');
+                }
+            }
+        }
+        new Vue({
+            el: '#app',
+            components: {
+                'app-header': appHeader
+            },
+            methods: {
+                // logText라는 이벤트
+                logText: function() {
+                    console.log('HI!');
+                }
+            }
+        });
+    </script>
+    
+</body>
+</html>
