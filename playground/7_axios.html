@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Axios</title>
+</head>
+<body>
+  <div id="app">
+    <button v-on:click="getData">get user</button>
+    <div>
+      {{ users }}
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        users: []
+      },
+      methods: {
+        getData: function() { 
+          var vm = this;
+          axios.get('https://jsonplaceholder.typicode.com/users/')  // url: 테스트를 위한 데이터 제공
+            
+            // promise에 대한 설명 필요
+            .then(function(response) {        // 성공
+              console.log(response.data);
+              vm.users = response.data;       // this가 정말 원하는 data가 맞는가?
+              // 호출하기 전의 this와 axios의 this가 다르다.
+            })
+            .catch(function(error) {          // 실패
+              console.log(error);
+            });
+        }
+      }
+    })
+  </script>
+</body>
+</html>
