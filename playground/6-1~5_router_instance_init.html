@@ -8,6 +8,10 @@
 </head>
 <body>
 	<div id="app">
+		<!-- router-link: router에서 페이지 이동을 하기 위한 링크 태그. -->
+		<!-- router-link: a태그 / to: href= -->
+		<router-link to="/login">Login</router-link>
+		<router-link to="/main">Main</router-link>
 		<router-view></router-view>
 	</div>
 	<!-----  router를 위한 기본 구조----->
@@ -23,6 +27,7 @@
 		}
 
 		var router = new VueRouter({
+			mode: 'history',		// URL의 hash(#)를 삭제시킨다.
 			// 페이지의 라우팅 정보: 배열
 			routes: [
 				// 페이지의 갯수만큼 객체의 갯수가 필요. 객체
@@ -30,8 +35,9 @@
 				{
 					//페이지의 URL
 					path: '/login',
+					// name: '/login'		// name속성으로 적용시켜도 된다.
 					// 해당 URL에서 표시될 컴포넌트
-					component: LoginComponent
+					component: LoginComponent		// 페이지 마다 뿌려지는 component는 하나다
 				},
 				{
 					path: '/main',
@@ -44,6 +50,7 @@
 		new Vue({
 			el: '#app',
 			router: router // 앞router: router속성 // 뒤에 오는 router: 위의 router변수
+			// components: // root에는 여러개를 등록할 수 있기 때문에 componentS
 		});
 	</script>
 	
