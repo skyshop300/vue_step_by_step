@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- v-bind: 화면의 특정태그의 id로 연결하기 위해 // id에다가 uuid를 연결 -->
+        <p v-bind:id="uuid" v-bind:class="name"></p>
+        <p v-bind:id="uuid" v-bind:class="name"></p>
+          <!-- ==> <p id="abc123"></p>   // 실제 표현 -->
+        <div v-if="loading">
+            잠시만 기다려주세요.
+        </div>
+        <div v-else="loading">
+            TEST 사용자가 로그인 상태입니다.
+        </div>
+        <div v-show="loading">
+            v-show: 잠시만 기다려주세요.
+        </div>
+        <!-- v-show VS v-if 의 차이점 -->
+        <!--    v-if: DOM을 아예 제거 -->
+        <!--    v-show: display:none; -->
+
+
+        <!-- 공식문서를 찾아보는 습관을 기르자 -->
+        <!-- input의 동기화 -->
+        <input type="text">
+        <input v-model="message" placeholder="edit me">
+        <p>Message is: {{ message }}</p>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        
+
+        new Vue({
+            el: '#app',
+            data: {
+                str: 'hi',
+                num: 99,
+                uuid: 'abc123',  // <p v-bind:id="uuid"></p>
+                name: 'text-blue',
+                loading: true,
+                message: ''
+
+            },
+            // 수식을 계산한다
+            computed:  {
+                doubleNum: function() {
+                    return this.num * 2
+                }
+            }
+        })
+    </script>
+</body>
+</html>
