@@ -58,3 +58,20 @@ var app6 = new Vue({
 		message: 'TEXT를 입력해보세요.'
 	}
 })
+
+// # 뷰 컴포넌트
+Vue.component('todo-item', {
+	props: ['todo'],					// props interface로 부모로부터 분리할 수 있다.
+	template: '<li>{{todo.text}}</li>'
+})
+
+var app7 = new Vue({
+	el: '#app-7',
+	data: {
+		groceryList: [
+			{ id: 0, text: 'Vegetables' },
+			{ id: 1, text: 'Cheese' },
+			{ id: 2, text: 'etc' },
+		]
+	}
+});
